@@ -1,0 +1,1 @@
+using Prueba.DTOs; namespace Prueba.Services; public interface IClienteService { Task<IReadOnlyCollection<ClienteDto>> GetAllAsync(CancellationToken ct); Task<ServiceResult<ClienteDto>> CreateAsync(CrearClienteDto request, CancellationToken ct); }

@@ -1,0 +1,33 @@
+
+connectionsetttings: 
+
+"ConnectionStrings": {
+  "DefaultConnection": "Server=DESKTOP-BDFAM2T;Database=ProductApiDb;Trusted_Connection=True;TrustServerCertificate=True;"
+  }
+
+
+para crear:
+  Invoke-RestMethod -Uri "http://localhost:5144/api/products" -Method POST -ContentType "application/json" -Body '{"id":"3","name":"Monitor","price":199.99}'
+
+para actualizar:
+ Invoke-RestMethod -Uri "http://localhost:5144/api/products/1" -Method PUT -ContentType "application/json" -Body '{"name":"Gaming Monitor","price":249.99}'
+
+eliminar: 
+
+ Invoke-RestMethod -Uri "http://localhost:5144/api/products/1" -Method DELETE -ContentType "application/json" 
+
+
+
+paquetes: 
+
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+
+dotnet add package Microsoft.EntityFrameworkCore.Design
+
+
+migraciones:
+
+dotnet ef migrations add InitialCreate
+
+dotnet ef database update
+

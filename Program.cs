@@ -1,0 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using Prueba.Data;
+using Prueba.Services;
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
+builder.Services.AddOpenApi();
+builder.Services.AddDbContext<AppDbContext>(o => o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IClienteService, ClienteService>();
+builder.Services.AddScoped<IOrdenService, OrdenService>();
+var app = builder.Build();
+if (app.Environment.IsDevelopment()) app.MapOpenApi();
+app.UseHttpsRedirection(); app.UseDefaultFiles(); app.UseStaticFiles(); app.MapControllers();
+using (var scope = app.Services.CreateScope()) await DbInitializer.InitializeAsync(scope.ServiceProvider.GetRequiredService<AppDbContext>());
+app.Run();

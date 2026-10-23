@@ -1,0 +1,18 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# Editors
+.vscode/
+
+# Local configuration
+appsettings.Development.json
+
+# OS files
+.DS_Store
+Thumbs.db
