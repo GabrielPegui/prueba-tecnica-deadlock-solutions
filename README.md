@@ -1,61 +1,61 @@
-# Deadlock Solutions Technical Assessment
+# Prueba técnica Deadlock Solutions
 
-Full-stack technical assessment built with ASP.NET Core, Entity Framework Core, SQL Server and vanilla JavaScript.
+Aplicación full-stack desarrollada para la prueba técnica de Deadlock Solutions utilizando ASP.NET Core, Entity Framework Core, SQL Server y JavaScript vanilla.
 
-## Features
+## Funcionalidades
 
-- Client registration and listing.
-- Product catalog with stock tracking.
-- Order creation with a minimum of two different products.
-- Stock validation and transactional stock updates.
-- Order item quantity updates.
-- Stock restoration when an order item is removed.
-- Invoice preview generated from an order.
-- Basic frontend served from `wwwroot`.
+- Registro y consulta de clientes.
+- Catálogo de productos con control de stock.
+- Creación de órdenes con un mínimo de dos productos diferentes.
+- Validación de stock y actualización transaccional del inventario.
+- Actualización de cantidades dentro de una orden.
+- Restauración del stock al eliminar un ítem de una orden.
+- Generación de una vista previa de factura.
+- Frontend básico servido desde `wwwroot`.
 
-## Architecture
+## Arquitectura
 
-The backend follows a simple layered structure:
+El backend utiliza una separación sencilla por responsabilidades:
 
-- `Controllers`: HTTP endpoints and response codes.
-- `Services`: business rules and asynchronous operations.
-- `Data`: Entity Framework Core context and database initialization.
-- `Models`: database entities.
-- `DTOs`: request and response contracts.
-- `wwwroot`: basic frontend using HTML, CSS and JavaScript.
+- `Controllers`: endpoints HTTP y códigos de respuesta.
+- `Services`: reglas de negocio y operaciones asíncronas.
+- `Data`: contexto de Entity Framework Core e inicialización de la base de datos.
+- `Models`: entidades de la base de datos.
+- `DTOs`: contratos de entrada y salida.
+- `wwwroot`: frontend básico con HTML, CSS y JavaScript.
 
-## Requirements
+## Requisitos
 
 - .NET 10 SDK
 - SQL Server
 
-## Running the project
+## Ejecución
 
-1. Configure `ConnectionStrings:DefaultConnection` in `appsettings.json`.
-2. Run the application:
+1. Configurar `ConnectionStrings:DefaultConnection` en `appsettings.json`.
+2. Ejecutar la aplicación:
 
 ```bash
 dotnet run
 ```
 
-3. Open the URL shown by ASP.NET Core. The frontend is available at `/`.
-4. OpenAPI is available at `/openapi/v1.json` in development.
+3. Abrir la URL mostrada por ASP.NET Core. El frontend está disponible en `/`.
+4. OpenAPI está disponible en `/openapi/v1.json` durante el entorno de desarrollo.
 
-The application creates the database and initial products on startup when they do not exist.
+La aplicación crea la base de datos y los productos iniciales al iniciar, si todavía no existen.
 
-## Main endpoints
+## Endpoints principales
 
-| Method | Endpoint | Description |
+| Método | Endpoint | Descripción |
 |---|---|---|
-| GET | `/api/clientes` | List clients |
-| POST | `/api/clientes` | Create a client |
-| GET | `/api/productos` | List products and stock |
-| POST | `/api/ordenes` | Create an order |
-| PATCH | `/api/ordenes/{ordenId}/items/{itemId}` | Update item quantity |
-| DELETE | `/api/ordenes/{ordenId}/items/{itemId}` | Remove an item and restore stock |
-| POST | `/api/ordenes/{ordenId}/factura` | Generate invoice preview |
+| GET | `/api/clientes` | Listar clientes |
+| POST | `/api/clientes` | Registrar un cliente |
+| GET | `/api/productos` | Listar productos y stock |
+| POST | `/api/ordenes` | Crear una orden |
+| PATCH | `/api/ordenes/{ordenId}/items/{itemId}` | Actualizar la cantidad de un ítem |
+| DELETE | `/api/ordenes/{ordenId}/items/{itemId}` | Eliminar un ítem y restaurar el stock |
+| POST | `/api/ordenes/{ordenId}/factura` | Generar una vista previa de factura |
 
-## Example order request
+## Ejemplo de solicitud para crear una orden
 
 ```json
 {
@@ -66,3 +66,10 @@ The application creates the database and initial products on startup when they d
   ]
 }
 ```
+
+## Tecnologías utilizadas
+
+- C# y ASP.NET Core
+- Entity Framework Core
+- SQL Server
+- HTML, CSS y JavaScript vanilla
